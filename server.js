@@ -60,6 +60,7 @@ app.use(bodyParser.json({ limit: '100kb' }));
 
 // Main HTML page to be returned is in the build directory
 app.get('/', function(req, res) {
+    console.log('Received a GET request')
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
@@ -122,13 +123,6 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500).json({ message: err.toString(), error: {} });
     console.log(err);
 });
-
-
-app.get('/', (req, res) => {
-    console.log('Received a GET request')
-    res.send('Hello World!')
-})
-
 
 /* const server = app.listen(port, () => console.log('Example app listening on port port ' + port + '!')) */
 
